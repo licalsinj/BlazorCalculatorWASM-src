@@ -1,3 +1,13 @@
+
+:root {
+  /* custom colors */
+  --apple-green: #80b039;
+  --dark-moss-green: #3d521e;
+  --night: #141115;
+  --eggplant: #4C2B36;
+  --rufous: #A72608;
+}
+
 .page {
     position: relative;
     display: flex;
@@ -9,7 +19,7 @@ main {
 }
 
 .sidebar {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+    background-image: linear-gradient(180deg, rgb(20, 17, 21) 0%, rgb(128, 176, 57) 70%);
 }
 
 .top-row {

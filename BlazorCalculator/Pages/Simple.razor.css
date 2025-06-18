@@ -1,0 +1,36 @@
+
+    .calc-buttons {
+        width: 100px;
+        height: 100px;
+        font-size: 30px;
+    }
+
+    .calc-buttons-double-horiz {
+        width:200px;
+        height: 100px;
+        font-size: 30px;
+    }
+
+    .calc-buttons-double-vert {
+        width: 100px;
+        height: 200px;
+        font-size: 30px;
+    }
+
+    .btn-secondary {
+        background-color: #3D521E;
+    }
+
+    .btn-primary {
+        background-color: #80B039;
+    }
+
+    .calc-display {
+        font-size: 45px;
+        text-align: right;
+    }
+
+    .calc-display-secondary {
+        font-size: 45px;
+        text-align: left;
+    }
