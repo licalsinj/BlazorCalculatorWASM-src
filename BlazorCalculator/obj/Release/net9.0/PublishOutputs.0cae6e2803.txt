@@ -1,1 +1,0 @@
-/Users/dev/Documents/Code/Csharp/Blazor/BlazorCalculator/BlazorCalculatorWASM/BlazorCalculator/bin/Release/net9.0/publish/web.config
