@@ -1763,11 +1763,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/dev/Documents/Code/Csharp/Blazor/BlazorCalculatorWASM/BlazorCalculator/BlazorCalculator.csproj",
+      "projectUniqueName": "/Users/dev/Documents/Code/Csharp/Blazor/BlazorCalculator/BlazorCalculatorWASM/BlazorCalculator/BlazorCalculator.csproj",
       "projectName": "BlazorCalculator",
-      "projectPath": "/Users/dev/Documents/Code/Csharp/Blazor/BlazorCalculatorWASM/BlazorCalculator/BlazorCalculator.csproj",
+      "projectPath": "/Users/dev/Documents/Code/Csharp/Blazor/BlazorCalculator/BlazorCalculatorWASM/BlazorCalculator/BlazorCalculator.csproj",
       "packagesPath": "/Users/dev/.nuget/packages/",
-      "outputPath": "/Users/dev/Documents/Code/Csharp/Blazor/BlazorCalculatorWASM/BlazorCalculator/obj/",
+      "outputPath": "/Users/dev/Documents/Code/Csharp/Blazor/BlazorCalculator/BlazorCalculatorWASM/BlazorCalculator/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

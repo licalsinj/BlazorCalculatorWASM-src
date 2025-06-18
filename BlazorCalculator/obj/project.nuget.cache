@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yAazIwmR4Ps=",
+  "dgSpecHash": "k3ZUxmu3k4I=",
   "success": true,
-  "projectFilePath": "/Users/dev/Documents/Code/Csharp/Blazor/BlazorCalculatorWASM/BlazorCalculator/BlazorCalculator.csproj",
+  "projectFilePath": "/Users/dev/Documents/Code/Csharp/Blazor/BlazorCalculator/BlazorCalculatorWASM/BlazorCalculator/BlazorCalculator.csproj",
   "expectedPackageFiles": [
     "/Users/dev/.nuget/packages/microsoft.aspnetcore.authorization/9.0.6/microsoft.aspnetcore.authorization.9.0.6.nupkg.sha512",
     "/Users/dev/.nuget/packages/microsoft.aspnetcore.components/9.0.6/microsoft.aspnetcore.components.9.0.6.nupkg.sha512",
