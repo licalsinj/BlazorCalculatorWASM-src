@@ -1,0 +1,129 @@
+﻿@page "/"
+
+
+<PageTitle>Simple Calculator</PageTitle>
+
+<h1>Simple Calculator</h1>
+
+<p>This is a simple calculator that I made with Blazor and C#.</p>
+<div>
+    <table>
+        <tr>
+            <td colspan="2" class="calc-display-secondary" role="status">@previousNumber @function</td>
+            <td colspan="2" class="calc-display" role="status">@currentNumber@showDecimal</td>
+        </tr>
+        <tr>
+            <td colspan="2"><button class="btn btn-secondary calc-buttons-double-horiz" width="100%" @onclick="AllClear">AC</button></td>
+            <td><button class="btn btn-secondary calc-buttons" @onclick='() => FunctionAction("÷")'>÷</button></td>
+            <td><button class="btn btn-secondary calc-buttons" @onclick='() => FunctionAction("×")'>×</button></td>
+        </tr>
+        <tr>
+            <td><button class="btn btn-primary calc-buttons" @onclick='() => NumberButtons(1)'>1</button></td>
+            <td><button class="btn btn-primary calc-buttons" @onclick='() => NumberButtons(2)'>2</button></td>
+            <td><button class="btn btn-primary calc-buttons" @onclick='() => NumberButtons(3)'>3</button></td>
+            <td><button class="btn btn-secondary calc-buttons" @onclick='() => FunctionAction("-")'>-</button></td>
+        </tr>
+        <tr>
+            <td><button class="btn btn-primary calc-buttons" @onclick='() => NumberButtons(4)'>4</button></td>
+            <td><button class="btn btn-primary calc-buttons" @onclick='() => NumberButtons(5)'>5</button></td>
+            <td><button class="btn btn-primary calc-buttons" @onclick='() => NumberButtons(6)'>6</button></td>
+            <td><button class="btn btn-secondary calc-buttons" @onclick='() => FunctionAction("+")'>+</button></td>
+        </tr>
+        <tr>
+            <td><button class="btn btn-primary calc-buttons" @onclick='() => NumberButtons(7)'>7</button></td>
+            <td><button class="btn btn-primary calc-buttons" @onclick='() => NumberButtons(8)'>8</button></td>
+            <td><button class="btn btn-primary calc-buttons" @onclick='() => NumberButtons(9)'>9</button></td>
+            <td rowspan="2"><button class="btn btn-secondary calc-buttons-double-vert" @onclick="Calculate">=</button></td>
+        </tr>
+        <tr>
+            <td><button class="btn btn-secondary calc-buttons" @onclick="Inverse">+/-</button></td>
+            <td><button class="btn btn-primary calc-buttons" @onclick='() => NumberButtons(0)'>0</button></td>
+            <td><button class="btn btn-secondary calc-buttons" @onclick='DecimalPlace'>.</button></td>
+        </tr>
+    </table>
+</div>
+<p>Copyright © 2025 Nicholas Licalsi</p>
+@code {
+    private decimal currentNumber = 0m;
+    private decimal? previousNumber = null;
+    private string function = "";
+    private int decimalPlaces = 0;
+    private string showDecimal = "";
+    private void NumberButtons(int onesPlace)
+    {
+        Console.WriteLine("numBtn Decimal Places: {0}",decimalPlaces);
+
+        if(decimalPlaces == 0) {
+            currentNumber = currentNumber*10+(decimal)onesPlace;
+        }
+        else {
+            currentNumber = currentNumber + (decimal)onesPlace * (1/(decimal)Math.Pow(10,(double)decimalPlaces));
+            decimalPlaces++;
+            showDecimal = "";
+        }    
+    }
+    private void FunctionAction(string calcAction){
+        Calculate();
+        previousNumber = currentNumber;
+        currentNumber = 0;
+        function = calcAction;
+        decimalPlaces = GetDigitsAfterDecimal((double)currentNumber);
+        Console.WriteLine("fnAct Decimal Places: {0}",decimalPlaces);
+
+    }
+
+    private void AllClear(){
+        currentNumber = 0m;
+        previousNumber = null;
+        function = "";
+        decimalPlaces = 0;
+    }
+
+    private void Inverse(){
+        currentNumber *= -1;
+    }
+    private void DecimalPlace(){
+        if(decimalPlaces == 0){
+            decimalPlaces = 1;
+            showDecimal = ".";
+        }
+    }
+
+    private void Calculate(){
+        switch(function) {
+            case "+":
+                currentNumber = previousNumber.GetValueOrDefault() + currentNumber;
+                break;
+            case "-":
+                currentNumber =  previousNumber.GetValueOrDefault() - currentNumber;
+                break;
+            case "×":
+                currentNumber = previousNumber.GetValueOrDefault() * currentNumber;
+                break;
+            case "÷":
+                currentNumber = Math.Round(previousNumber.GetValueOrDefault() / currentNumber,4);
+                decimalPlaces = GetDigitsAfterDecimal((double)currentNumber);
+                Console.WriteLine("÷ Decimal Places: {0}",decimalPlaces);
+
+                break;
+            default:
+                break;
+        }
+        previousNumber = null;
+        function = "";
+        decimalPlaces = GetDigitsAfterDecimal((double)currentNumber);
+        Console.WriteLine("swtc Decimal Places: {0}",decimalPlaces);
+
+    }
+
+    private int GetDigitsAfterDecimal(double inputDouble){
+        for(int x = 0; x <= 5; x++){
+            Console.WriteLine("{0}=={1}",inputDouble*Math.Pow(10,x),Math.Truncate(inputDouble*Math.Pow(10,x)));
+            if(inputDouble*Math.Pow(10,x) == Math.Truncate(inputDouble*Math.Pow(10,x))){
+                return x;
+            }
+        }
+        Console.WriteLine("Something went wrong calculating digits after decimal.");
+        return 4;
+    }
+}
