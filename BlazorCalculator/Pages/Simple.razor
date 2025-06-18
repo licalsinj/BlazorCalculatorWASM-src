@@ -43,6 +43,7 @@
     </table>
 </div>
 <p>Copyright © 2025 Nicholas Licalsi</p>
+
 @code {
     private decimal currentNumber = 0m;
     private decimal? previousNumber = null;
@@ -51,8 +52,6 @@
     private string showDecimal = "";
     private void NumberButtons(int onesPlace)
     {
-        Console.WriteLine("numBtn Decimal Places: {0}",decimalPlaces);
-
         if(decimalPlaces == 0) {
             currentNumber = currentNumber*10+(decimal)onesPlace;
         }
@@ -67,9 +66,7 @@
         previousNumber = currentNumber;
         currentNumber = 0;
         function = calcAction;
-        decimalPlaces = GetDigitsAfterDecimal((double)currentNumber);
-        Console.WriteLine("fnAct Decimal Places: {0}",decimalPlaces);
-
+        decimalPlaces = 0;
     }
 
     private void AllClear(){
@@ -83,10 +80,8 @@
         currentNumber *= -1;
     }
     private void DecimalPlace(){
-        if(decimalPlaces == 0){
-            decimalPlaces = 1;
-            showDecimal = ".";
-        }
+        decimalPlaces = 1;
+        showDecimal = ".";
     }
 
     private void Calculate(){
@@ -102,28 +97,12 @@
                 break;
             case "÷":
                 currentNumber = Math.Round(previousNumber.GetValueOrDefault() / currentNumber,4);
-                decimalPlaces = GetDigitsAfterDecimal((double)currentNumber);
-                Console.WriteLine("÷ Decimal Places: {0}",decimalPlaces);
-
                 break;
             default:
                 break;
         }
         previousNumber = null;
         function = "";
-        decimalPlaces = GetDigitsAfterDecimal((double)currentNumber);
-        Console.WriteLine("swtc Decimal Places: {0}",decimalPlaces);
-
-    }
-
-    private int GetDigitsAfterDecimal(double inputDouble){
-        for(int x = 0; x <= 5; x++){
-            Console.WriteLine("{0}=={1}",inputDouble*Math.Pow(10,x),Math.Truncate(inputDouble*Math.Pow(10,x)));
-            if(inputDouble*Math.Pow(10,x) == Math.Truncate(inputDouble*Math.Pow(10,x))){
-                return x;
-            }
-        }
-        Console.WriteLine("Something went wrong calculating digits after decimal.");
-        return 4;
+        decimalPlaces = 0;
     }
 }
